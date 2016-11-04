@@ -104,10 +104,16 @@ var customoverlay = {
       xOffset : 'center',
       content: 'Click of the column of your interest that will ease your ready. It can be 2,3,4 or 6',
     },
+      {
+      target: 'next_topics',
+      placement: 'bottom',
+      xOffset : 'center',
+      content: 'Goto the next page of customization',
+    },
     {
       target: 'topics',
       placement: 'top',
-      content: 'Choose the area of your interest. I will choose the board depending on these topics. Select atleast more than 5 topics and click on "Save"',
+      content: 'Choose the area of your interest. I will display the board depending on these topics. Select atleast more than 5 topics and click on "Save"',
       xOffset : 600,
     },
   ],
