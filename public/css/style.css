@@ -202,6 +202,9 @@ nav.shrink .top-search-bar{
 .news .col-md-2{
     height: 600px;
 }
+.news .col-md-6{
+    height: 300px;
+}
 .resources .col-md-3{
     height: 400px;
 }
