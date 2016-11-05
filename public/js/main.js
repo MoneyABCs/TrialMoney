@@ -270,7 +270,8 @@ $(".modal-fullscreen").on('hidden.bs.modal', function () {
 var alertQueue = [];
 var alerts = [];
 
-var cAlert = function(body, type, icon = "bubble2", time = 2) {
+//var cAlert = function(body, type, icon = "bubble2", time = 2) {
+cAlert = function(body, type, icon = "bubble2", time = 2) {
 	this.body = body;
 	this.type = type;
 	this.icon = icon;
