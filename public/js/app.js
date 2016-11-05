@@ -152,6 +152,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 			});
 		} else {
 			var data = [];
+			$scope.resources = $scope.resourcesBackup;
 			$scope.resources.filter(function(el) {
 				var categories = el.category.split(",");
 				for(var i=0;i<categories.length;i++){
@@ -383,6 +384,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 	
    $http.get('/resources.json').success(function (data){
 		$scope.resources = data;
+		$scope.resourcesBackup = $scope.resources;
 	});
 	console.log($scope.resources); 
     
