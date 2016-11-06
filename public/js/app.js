@@ -9,26 +9,52 @@ app.directive('imageonload', function() {
     link: function(scope, element, attrs) {
         element.bind('error', function(){
 			var index;
-			for(var loopVar = 0;loopVar < 161;loopVar++){
+			for(var loopVar = 0;loopVar < 160;loopVar++){
 				index = loopVar + 1;
 				if(searchTopics[loopVar]["search_topics_" + index] == angular.element(this).attr("topic").replace(/ /g,"%20")){
-					angular.element(this).attr("src", "./images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*5) + ".png");
+					angular.element(this).attr("src", "./images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*3) + ".png");
 				}
 			}
 			angular.element(this).attr("set","yes");
 		});
 		element.on('load', function (event) {
-			
+			var index;
 			if(angular.element(this)[0].width <= 80 && angular.element(this).attr("set") == "no"){
-				console.log(angular.element(this)[0].width)
-				var index;
-				for(var loopVar = 0;loopVar < 161;loopVar++){
+				for(var loopVar = 0;loopVar < 160;loopVar++){
 					index = loopVar + 1;
 					if(searchTopics[loopVar]["search_topics_" + index] == angular.element(this).attr("topic").replace(/ /g,"%20")){
-						angular.element(this).attr("src", "./images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*5) + ".png");
+						angular.element(this).attr("src", "./images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*3) + ".png");
 					}
 				}
 				angular.element(this).attr("set","yes");
+			} else if(angular.element(this).attr("set") == "no"){
+				exp = angular.element(this).attr("src");
+				switch(exp){
+					case "http://assets.nerdwallet.com/img/nw-logos/NW-default_og-image.jpg" :
+					angular.element(this).attr("src", "./images/defaultImg/search_152/" + Math.ceil(Math.random()*5) + ".png");
+					angular.element(this).attr("set","yes");
+					break;
+					case "//g.foolcdn.com/assets/images/fool/tmf-logo.png" :
+					angular.element(this).attr("src", "./images/defaultImg/search_134" + index + "/" + Math.ceil(Math.random()*3) + ".png");
+					angular.element(this).attr("set","yes");
+					break;
+					case "https://assets.bwbx.io/markets/public/images/marketdata-quoteshare-image-31c2f97627.png" :
+					angular.element(this).attr("src", "./images/defaultImg/search_118" + index + "/" + Math.ceil(Math.random()*3) + ".png");
+					angular.element(this).attr("set","yes");
+					break;
+					case "https://www.consumer.ftc.gov/sites/default/files/styles/related_multimedia_thumbs/public/videos/thumbnails/video-0078_payday-lending_thumb.png?itok=aMwUgBl3" :
+					angular.element(this).attr("src", "./images/defaultImg/search_53" + index + "/" + Math.ceil(Math.random()*3) + ".png");
+					angular.element(this).attr("set","yes");
+					break
+					case "http://i.cdn.turner.com/money/.element/img/1.0/misc/1.gif" :
+					angular.element(this).attr("src", "./images/defaultImg/search_134" + index + "/" + Math.ceil(Math.random()*3) + ".png");
+					angular.element(this).attr("set","yes");
+					break;
+					case "https://static01.nyt.com/images/icons/t_logo_291_black.png":
+					angular.element(this).attr("src", "./images/defaultImg/search_84" + index + "/" + Math.ceil(Math.random()*3) + ".png");
+					angular.element(this).attr("set","yes");
+					break;
+				}
 			}
         });
     }
@@ -133,12 +159,19 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 					} else {
 						$("#sub_resources").css("display","none");
 					}
+					for(var i=0;i<res.data.length;i++){
+						res.data[i].indexTopic = res.data[i].topicName;
+					}
 					$scope.totalRes = res.data;
+
 					$scope.article = $scope.totalRes.splice(0,res.data.length);
 					for(var i=0;i<res.data.length;i++){
 						url = $scope.article[i].iframeLink;
 						$scope.article[i].iframeLink = $sce.trustAsResourceUrl(url);
+						$scope.article[i].indexTopic = res.data[i].topicName;
 					}
+					
+					console.log($scope.article)
 				} else {
 					//print error message that data is not found
 					//$scope.err = res.errMsg;

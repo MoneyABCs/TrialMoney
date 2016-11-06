@@ -94,11 +94,9 @@
                             <div class="input-group-btn search-panel">
                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#id"><i class="fa fa-angle-double-right"></i>Articles</a></li>
-                                    <li><a href="#name"><i class="fa fa-angle-double-right"></i>Presentations</a></li>
-                                    <li><a href="#videos"><i class="fa fa-angle-double-right"></i>Videos</a></li>
-                                    <li><a href="#webinars"><i class="fa fa-angle-double-right"></i>Webinars</a></li>
-                                    <li><a href="#journals"><i class="fa fa-angle-double-right"></i>Journals</a></li>
+                                    <li ng-click="setSearch('Articles')"><a href="#id"><i class="fa fa-angle-double-right"></i>Articles</a></li>
+                                    <li ng-click="setSearch('Presentation')"><a href="#name"><i class="fa fa-angle-double-right"></i>Presentations</a></li>
+                                    <li ng-click="setSearch('Video')"><a href="#videos"><i class="fa fa-angle-double-right"></i>Videos</a></li>
                                 </ul>
                             </div>
                              <input type="hidden" name="search_param" value="name" id="search_param">

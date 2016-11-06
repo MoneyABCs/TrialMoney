@@ -166,50 +166,79 @@ var ArticleSearchFake = new mongoose.Schema({
 var ArticleSearchResult = mongoose.model('ArticleSearchResult',ArticleSearchFake);
 
 var searchSample = function(searchKeyword,res){
-	searchKeyword = searchKeyword.trim().replace(/ /g,"%20");
-	console.log(searchKeyword);
-	//var index = searchTopics.indexOf(searchKeyword);
-	//console.log(index);
-	//searchKeyword = "/^searchKeyword/";
-	var data = ArticleSearchResult.find({"topicName": new RegExp('^' + searchKeyword)},function(err,data){
-		//console.log(data)
-		//if data  length is not zero, send the data, else send the err msg to front end
-		if(data.length > 0){
-			var result = {
-				"data" : data,
-				"status" : 500
-			}
-			
+	var srcKey = searchKeyword;
+	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
+	var arr = searchKeyword.split(" ");
+	var finalData = [];
+	var i=0;
+	var myVar  = setInterval(function () {
+		if(i < arr.length) {
+			var data = ArticleSearchResult.find({"title": new RegExp('^' + arr[i])},function(err,data){
+				console.log(data)
+				if(data.length > 0){
+					for(var l =0 ;l < data.length;l++){
+						finalData.push(data[l]);
+					}
+				}
+				i++;
+			});
 		} else {
-			var result = {
-				"data" : [],
-				"status" : 404,
-				"errMsg" : "No search results found."
-			}
+			srcKey = srcKey.trim().replace(/ /g,"%20");
+			console.log("------------------------------------------")
+			var data = ArticleSearchResult.find({"topicName": new RegExp('^' + srcKey)},function(err,data){
+				console.log(data)
+				if(data.length > 0){
+					for(var l =0 ;l < data.length;l++){
+						finalData.push(data[l]);
+					}
+				}
+				clearInterval(myVar);
+				if(finalData.length > 0){
+					var result = {
+						"data" : finalData,
+						"status" : 500
+					}
+				} else {
+					var result = {
+						"data" : [],
+						"status" : 404,
+						"errMsg" : "No search results found."
+					}
+				}
+				clearInterval(myVar);
+				res.json(result);
+			});
+			
 		}
-		res.json(result);
-	});
+	},50);
+		
 }
 
 var searchArticle = function(searchKeyword,res){
 	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
-	console.log(searchKeyword);
-	var data = ArticleSearchResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
-		if(data.length > 0){
-			var result = {
-				"data" : data,
-				"status" : 500
+	var arr = searchKeyword.split(" ");
+	var finalData;
+	for(var i=0;i<arr.length;i++){
+		console.log(arr[i])
+		var data = ArticleSearchResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
+			if(data.length > 0){
+				finalData.push(data);
 			}
-			
-		} else {
-			var result = {
-				"data" : [],
-				"status" : 404,
-				"errMsg" : "No search results found."
-			}
+		});
+	}
+	if(finalData.length > 0){
+		var result = {
+			"data" : finalData,
+			"status" : 500
 		}
-		res.json(result);
-	});
+	} else {
+		var result = {
+			"data" : [],
+			"status" : 404,
+			"errMsg" : "No search results found."
+		}
+	}
+	res.json(result);	
 }
 
 app.post("/searchArticle", function (req,res){
