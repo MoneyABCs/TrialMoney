@@ -19,7 +19,9 @@ var userSchema = mongoose.Schema({
         organization:String,
         nameoforganisation:String,
         password:String,
-        confirmpassword:String
+        confirmpassword:String,
+        url1:String,
+        url2:String
         
     },
     facebook: {

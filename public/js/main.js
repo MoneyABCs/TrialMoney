@@ -36,6 +36,17 @@ $(window).scroll(function() {
 });
 
 $(function(){
+    $('.onkeysearchbt').on("click",function(){
+      var addedTopic=$('.typeahead li.active').attr('data-value');
+        $('.selected-topics').append($('<span>',{
+            text:'x  '+addedTopic,
+            class: 'tag',
+            id: addedTopic
+        }));
+    });
+});
+
+$(function(){
     $('.search').on("click",function(){
         $("#search-results").modal();
     });
@@ -63,11 +74,13 @@ $(".btn").on("click", function() {
 });*/
 
 $(function () {
-if (localStorage.getItem("articleTopics") !=""){
-    $('.subtitleRes').css('display','block');
-}else{
-    $('.subtitleDef').css('display','block');
-}
+//if (localStorage.getItem("articleTopics") !=""){
+   // $('headRes').css('display','block');
+  //  $('.subtitleRes').css('display','block');
+//}else{
+ //   $('.headDef').css('display','block');
+ //   $('.subtitleDef').css('display','block');
+//}
     var topicsContent;
     $.getJSON( "/topics.json", function( data ) {
     var topic_images = $('.topic-images');
@@ -154,6 +167,11 @@ $(function () {
 });
 $(function () {
     $('#next_topics').on("click",function () {
+        $('.footerContent').css('display','block');
+        $('.subtitleRes').css('display','block');
+        $('.headDef').css('display','none');
+        $('.headRes').css('display','block');
+        $('#previous_customize').css('display','block');
         $('.onkeysearchip').css('display','block');
         $('.topics').css('display','block');
         $('.customize_columns').css('display','none');
@@ -162,6 +180,11 @@ $(function () {
 });
 $(function () {
     $('#previous_customize').on("click",function () {
+        $('.subtitleRes').css('display','none');
+         $('.headDef').css('display','block');
+        $('.headRes').css('display','none');
+         $('.footerContent').css('display','none');
+         $('#previous_customize').css('display','none');
         $('.onkeysearchip').css('display','none');
         $('.topics').css('display','none');
         $('.customize_columns').css('display','block');
@@ -191,7 +214,11 @@ $(function () {
     });
 });
 
-
+$(function(){
+     if ($('.modal').css('display') == 'none') {
+         $('.resourcesSpace').html('null');
+     }
+});
 
 $(function(){
     $('.topic-images').on("click", "div", function () {

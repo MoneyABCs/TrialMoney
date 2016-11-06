@@ -319,7 +319,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
     }
     $scope.resetCustomized = function(){
         localStorage.setItem("articleTopics","");
-        var test = new cAlert("Your customization has been resetted.", "danger",20);
+        var test = new cAlert("Your topic selection has been cleared.", "danger",20);
         test.alert();
     }
     

@@ -80,6 +80,8 @@ var app = express();
             
             */
             newUser.local.password = newUser.generateHash(password);
+            newUser.local.url1 = req.param('url1');
+            newUser.local.url2 = req.param('url2');
             //newUser.local.confirmpassword = newUser.generateHash(confirmpassword);
             newUser.save(function(err){
                 if(err)

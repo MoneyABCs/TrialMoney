@@ -74,7 +74,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <div class="logo">
+                <div class="logo" id="logo">
                     <a href="index.html"><img src="images/logo.png"></a>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <div class="nav-buttons" id="user-buttons">
-                        <div id="login"><a type="button" class="btn btn-default btn-round" href="/login">Log in </a> <a type="button" class="btn btn-primary btn-round" href="/signup">Sign up</a></div>
+                        <div id="login"><a type="button" class="btn btn-default btn-round" href="/login">Log in </a> <a type="button" class="btn btn-primary btn-round" href="/signup" id="signup">Sign up</a></div>
                         <div id="loggedin">
                             <a href="profile.html">
                                 <label id="welcomeLabel" style="color:white;">
@@ -136,14 +136,14 @@
                         <!--  <h3>
                                 First slide</h3> -->
                         <h4>Our Mission </h4>
-                        <h4>Connecting individuals, institutions, and organizations to resources and research in order to cultivate personal financial stability.</h4> </div>
+                        <h4>Connecting individuals, institutions, and organizations to resources and research in order to cultivate personal financial stability</h4> </div>
                 </div>
                 <div class="item"> <img src="images/Layer-1.png" alt="Second slide">
                     <div class="carousel-caption">
                         <!-- <h3>
                                 Second slide</h3> -->
                         <h4>Our Vision </h4>
-                        <h4>For all people to be equipped to make sound financial decisions.</h4> </div>
+                        <h4>For all people to be equipped to make sound financial decisions</h4> </div>
                 </div>
                 <div class="item"> <img src="images/Layer-1.png" alt="Third slide">
                     <div class="carousel-caption">
@@ -155,7 +155,7 @@
                     <div class="carousel-caption">
                         <!-- <h3>
                                 Third slide</h3> -->
-                        <h4>Teachers of all levels, K-College will be able to create custom course for the students</h4> </div>
+                        <h4>Teachers of all levels, K-College will be able to create custom courses for their students</h4> </div>
                 </div>
                 <div class="item"> <img src="images/Layer-1.png" alt="Fifth slide">
                     <div class="carousel-caption">
@@ -176,7 +176,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-5">
-                        <div class="input-group">
+                        <div class="input-group" id="input_group">
                             <div class="input-group-btn search-panel">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span id="search_concept">Search for</span> <span class="caret"></span> </button>
                                 <ul class="dropdown-menu" role="menu">
@@ -205,7 +205,7 @@
                     <h4 class="subheading">
                             Here is what's trending in the news about personal finance and financial literacy.
                         </h4>
-                    <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Customize</a> </div>
+                    <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personlize</a> </div>
                 </div>
                 <div class="col-md-6" id="first_result">
                     <div class="sidebar_icons"> 
@@ -293,43 +293,47 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel" style="text-align:center">Customize your Boards by chosing the Layout and Topics</h4> 
-                    <h5 class="subtitleDef" style="text-align:center;display:none;" >(currently you will be getting Trending and most popular topics on the web)</h5>
-                    <h5 class="subtitleRes" style="text-align:center;display:none;">(currently you will be getting the topics according to your customized search criteria. Your can <a class="resetCustomize" ng-click="resetCustomized()">Reset here</a> anytime)</h5>
+                    <h3 class="modal-title headDef" id="myModalLabel" style="text-align:center">Personalize Your Experience</h3> 
+                    <h3 class="modal-title headRes"  style="text-align:center;display:none;"  id="myModalLabel" style="text-align:center">Tell us Which Topics you Want us to Prioritize</h3> 
+                    <h5 class="subtitleRes" style="text-align:center;display:none;">Unless you tell us otherwise, we’ll show you all the trending topics in the field. You can always revert to the default priority criterion by clicking <a class="resetCustomize" ng-click="resetCustomized()">here</a> anytime</h5>
                      <ul class="pager">
-                            <li class="previous" id="previous_customize"><a href="">Previous</a></li>
+                            <li class="previous" id="previous_customize" style="display:none;"><a href="">Previous</a></li>
                             <li class="next" id="next_topics"><a href="">Next</a></li>
                     </ul>
                     <ul class="pager onkeysearchip" style="display:none;"><li>
                     <div class="input-group" >
                         <input type="hidden" name="search_param" value="name" id="search_param">
-                         <input type="text" id="search-key" class="form-control search1 onkeysearchip" placeholder="What topic are you looking for? (e.g. Credit Scores) " autocomplete="off" class="customizeSearch" >
+                         <input type="text" id="search-key" class="form-control search1 onkeysearchip" placeholder="If you don’t like the suggested topics, type what you are interested in here! (e.g. Credit Scores)" autocomplete="off" class="customizeSearch" >
                         <span class="input-group-addon onkeysearchbt" id="basic-addon2" >Add</span>
                     </div>
+                    <div class="selected-topics-holder">
+                        <div class="footerContent" style="display:none;">
+                    <p>Your selection here</p>
+                    <div class="selected-topics"></div>
+                    </div>
+                        </div>
                         </li></ul>
                 </div>
                 <div class="modal-body">
                     <div class="customize_columns">
-                    <p id="customize">Personalize your display</p>
+                    <h4 id="customize">Choose your preferred display.</h4>
                     <div class="row customize-column" id="schema" style="text-align:center">
-                        <div onclick="sixcols();" style="margin: 10px; width: 200px; height: 200px; float: left; background-image: url('images/6col.jpg'); background-size:cover;"><p style="padding: 70px;">Six Column</p></div>
-                        <div onclick="original();" style="margin: 10px; width: 200px; height: 200px; float: left; background-image: url('images/4col.jpg'); background-size:cover;"> <p style="padding: 70px;">Four Column</p></div>
-                        <div onclick="threecols();" style="margin: 10px; width: 200px; height: 200px; float: left; background-image: url('images/3col.jpg'); background-size:cover;"><p style="padding: 70px;">Three Column</p></div>
-                        <div onclick="twocols();" style="margin: 10px; width: 200px; height: 200px; float: left; background-image: url('images/2col.jpg'); background-size:cover;"><p style="padding: 70px;">Two Column</p></div>
+                        <div onclick="sixcols();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/6col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Six Column</p></div>
+                        <div onclick="original();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/4col.jpg'); background-size:cover;border:3px solid rgb(80, 198, 63);"> <p style="padding: 70px;color:#8CC63F;">Four Column</p></div>
+                        <div onclick="threecols();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/3col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Three Column</p></div>
+                        <div onclick="twocols();" style="margin: 14px; width: 200px; height: 200px; float: left; background-image: url('images/2col.jpg'); background-size:cover;"><p style="padding: 70px;color:#8CC63F;">Two Column</p></div>
                     </div>
                 </div>
                    
                     <div class="topics" style="display:none;">
-                        <p id="topics">Priority your articles by chosing 5 topics 
+                        <p id="topics">Click on the topic(s) of your choice.
                             </p>
                         
                         <div class="row topic-images"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <p>Your selection here</p>
-                    <div class="selected-topics"></div>
-                    <button class="customizer-save" ng-click="getCustomizedArticles()" data-dismiss="modal">Save</button>
+                    <button class="customizer-save" ng-click="getCustomizedArticles()" data-dismiss="modal">Save & Exit</button>
                 </div>
             </div>
         </div>
@@ -341,9 +345,9 @@
                     <img src="images/Forma-1.png">
                     <h3>TEACH ME ABOUT MONEY</h3>
                     <h4 class="subheading">
-                            Dig into our instructional presentaions, webinars
+                            Dig into our multiple instructional presentations, webinars, and videos.
                         </h4>
-                    <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Customize</a> </div>
+                    <div class="customize_button" id="customize"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#customize-modal" style="display: block; width: 100%;">Personalize</a> </div>
                 </div>
                 <span ng-repeat="resourcesObj in resources">
                 <div class="col-md-3">
@@ -392,17 +396,14 @@
     </div>
     <!-- Resources End -->
     <section class="testimonials">
-        <div class="testimonials_">
+        <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-4"> <img src="images/testimonials.png"> </div>
-                        <div class="col-md-8">
-                            <h4>TESTIMONIALS</h4> </div>
-                    </div>
+                    <img src="images/testimonials.png">
+                    <h3>TESTIMONIALS</h3>
                 </div>
-                <div class="col-md-9">
-                    <h4>Thank you so much for taking the time to speak to my residents. The event was a success and they all enjoyed it and learned from it. I look forward to working with you in the future <br/><br/><span style="font-size:20px;">WR-Resident Assistant</span></h4> </div>
+                <div class="col-md-9 testimonials_">
+                    <h4><i>“Thank you so much for taking the time to speak to my residents. The event was a success and they all enjoyed it and learned from it. I look forward to working with you in the future ”</i><br/><br/><span style="font-size:20px;">“- W.R., Resident Assistant”</span></h4> </div>
             </div>
         </div>
     </section>

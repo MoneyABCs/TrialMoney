@@ -94,13 +94,14 @@ nav.shrink .top-search-bar{
 }
 
 .testimonials {
-    opacity: 0.7;
-    background-color: #8CC63F;
+   
 }
 
 .testimonials_ {
     padding: 20px 100px 20px 100px;
     color: white;
+     opacity: 0.7;
+    background-color: #8CC63F;
 }
 
 .footer {
@@ -298,6 +299,16 @@ nav.shrink .top-search-bar{
         width: 1170px;
     }
 }
+.modal-dialog {
+  margin: 0;
+  padding: 0;
+}
+
+
+.customize-column{
+     margin: auto;
+    width: 100%;
+}
 .tag {
   background: #eee;
   border-radius: 3px 0 0 3px;
@@ -306,7 +317,7 @@ nav.shrink .top-search-bar{
   height: 26px;
   line-height: 26px;
   padding: 0 20px 0 23px;
-  position: relative;
+  /*position: relative;*/
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
@@ -368,6 +379,8 @@ nav.shrink .top-search-bar{
 }
 .customizer .modal-body p{
     text-align: center;
+     max-height: calc(85vh - 210px);
+    overflow-y: auto;
 }
 .customize-column{
     width: 80%;
@@ -529,7 +542,7 @@ nav.shrink .top-search-bar{
     text-align: center;
 }*/
 .modal-body {
-    max-height: calc(100vh - 210px);
+    max-height: 100%;
     overflow-y: auto;
 }
 .modal-footer {
@@ -560,6 +573,11 @@ input[type="address"]:focus,
 input[type="city"]:focus,
 input[type="zipcode"]:focus,
 input[type="nameoforganisation"]:focus,
+input[type="roleinorganisation"]:focus,
+input[type="url2"]:focus,
+input[type="url1"]:focus,
+.prefix select:focus,
+.form-group select:focus,
 .uneditable-input:focus {   
   border-color: rgba(126, 239, 104, 0.8);
   outline: 0 none;

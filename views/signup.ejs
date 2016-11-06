@@ -63,7 +63,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="logo">
-                    <a href="index.html"><img src="images/logo.png"></a>
+                    <a href="#"><img src="images/logo.png"></a>
                 </div>
             </div>
 
@@ -104,7 +104,7 @@
 
                     <label style="font-weight:bold">
                      Prefix/Title: </label>
-                    <div  tooltip="Please enter a Prefix/Title that suits you">
+                    <div class="prefix" tooltip="Please enter a Prefix/Title that suits you">
                                 <select  name="title" id="title">
                                     <option value="Mr."> Mr.</option>
                                     <option value="Mrs."> Mrs.</option>
@@ -138,11 +138,13 @@
                                 </div>
                                 <div class="form-group" tooltip="Please select your Country here">
                                     
-                                    <select name="countries" id="countries"  class="form-control bfh-countries" data-country="US" onchange="document.getElementById('countries').value=this.value;"></select>
+                                    <select name="countries" id="countries"  class="form-control bfh-countries" tabindex="1" data-country="US" onchange="document.getElementById('countries').value=this.value;"></select>
                                 </div>
                                 <div class="form-group" tooltip="Please select your State here">
                                     
-                                    <select name="states" id="states"  class="form-control bfh-states" onchange="document.getElementById('states').value=this.value;" data-country="countries"></select>
+                                    <select name="states" id="states" class="form-control bfh-states"  onchange="document.getElementById('states').value=this.value;" tabindex="1" data-state="TX" data-country="countries">
+                                        
+                                    </select>
                                 </div>
                                 <div class="form-group" tooltip="Please enter your City here">
                                     
@@ -154,15 +156,15 @@
                                 </div>
                                 <div class="form-group" tooltip="Please enter your Phone-number here">
                                     
-                                    <input type="text" class="form-control bfh-phone"  data-country="countries">
+                                    <input type="text" class="form-control "  tabindex="1"  placeholder="(000)-000-0000" data-country="countries">
                                 </div>
-                                <div class="form-group" tooltip="Please select the Type of Organisation">
+                                <div class="form-group"tooltip="Please select the Type of Organisation">
                                     <fieldset>
                                         <label>
                                             
-                                            <select class="form-control" name="organization" onchange="java_script_:show(this.options[this.selectedIndex].value);">"
+                                            <select  tabindex="1"  class="form-control" name="organization"  onchange="java_script_:show(this.options[this.selectedIndex].value);">"
                                                 <!--onchange="document.getElementById('organization').value=this.value;"-->
-                                                <option value="">Type of organisation</option>
+                                                <option value="">Type of organization</option>
                                                 <option value="school">School</option>
                                                 <option value="Regulator or government agency">Regulator or government agency</option>
                                                 <option value="non-profit">non-profit</option>
@@ -206,13 +208,14 @@
                                     </fieldset>
                                 </div>
 
-                                <div class="form-group" tooltip="Please type your Name of Organisation here">
+                                <div class="form-group" tooltip="Please type your Name of Organization here">
                                     
-                                    <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control" placeholder="Name of Organisation" value="">
+                                    <input type="nameoforganisation" name="nameoforganisation" id="nameoforganisation" tabindex="1"  class="form-control" placeholder="Name of Organization" value="">
                                 </div>
-                                <div class="form-group" tooltip="Please type your Role in an  Organisation here">
+
+                                <div class="form-group" tooltip="Please type your Role in an  Organization here">
                                     
-                                    <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" placeholder="Role in Organisation" value="">
+                                    <input type="roleinorganisation" name="roleinorganisation" id="roleinorganisation" tabindex="1"  class="form-control" placeholder="Role in Organization" value="">
                                 </div>
                                <!--  <div class="form-group">
                                     <label class="checkbox-inline" name="check" id="check" onchange="document.getElementById('check').value=this.value;" style="font-weight:bold">Role in an Organization:</label>
@@ -226,14 +229,21 @@
                                     <label class="checkbox-inline">
                                         <input type="checkbox" value="">Staff</label>&nbsp&nbsp
                                 </div> -->
+                              <!--   <div class="form-group" tooltip="Please enter the URL to institution">
+                                    
+                                    <input type="url" name="url" id="url" tabindex="1"  class="form-control" placeholder="URL to Institution" value="http://www.google.com">
+                                </div>
+ -->
+
                                 <div class="form-group" tooltip="Please enter the URL to institution">
                                     
-                                    <input type="url" name="url" id="url" tabindex="1"  class="form-control" placeholder="URL to Institution" value="">
+                                    <input type="url2" name="url2" id="url2" tabindex="1"  class="form-control" placeholder="URL to institution" value="">
                                 </div>
-                                <div class="form-group" tooltip="Please enter the URL to profile">
+                                 <div class="form-group" tooltip="Please enter the URL to profile">
                                     
                                     <input type="url1" name="url1" id="url1" tabindex="1"  class="form-control" placeholder="URL to Profile" value="">
                                 </div>
+
 
                                <!--  <div class="form-group" tooltip="Please select your Role within the  Organization">
                                     <label>
