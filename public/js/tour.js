@@ -17,7 +17,7 @@ var homepage = {
     },
     {
       target: 'news-section',
-      title: 'Confuse Where to begin?',
+      title: 'Confused Where to begin?',
       content: 'The section below shows what’s trending online in the field of financial literacy. Visit us daily for fresh articles.  ',
       placement: 'top',
  showCloseButton : 'true',
