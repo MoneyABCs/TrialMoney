@@ -397,7 +397,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 									});
 									johnRemoved.unshift(res.data[0])
 									setData(johnRemoved);
-									//localStorage.setItem("fromEmailArticle","")
+									localStorage.setItem("fromEmailArticle","")
 								}
 							})
 						} else {
