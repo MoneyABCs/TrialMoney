@@ -289,6 +289,7 @@ var searchSample = function(searchKeyword,res){
 //this is for email
 var searchArticle = function(searchKeyword,res){
 	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
+	console.log(searchKeyword)
 	var data = ArticleSearchResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
 		if(data.length > 0){
 			var result = {
@@ -296,13 +297,22 @@ var searchArticle = function(searchKeyword,res){
 				"status" : 500
 			}
 		} else {
-			var result = {
-				"data" : [],
-				"status" : 404,
-				"errMsg" : "No search results found."
-			}
+			var data = ArticleFeaturedResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
+				if(data.length > 0){
+					var result = {
+						"data" : data,
+						"status" : 500
+					}
+				} else {
+					var result = {
+						"data" : [],
+						"status" : 404,
+						"errMsg" : "No search results found."
+					}
+				}
+				res.json(result);
+			});
 		}
-		res.json(result);
 	});		
 }
 

@@ -221,9 +221,11 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 	}
 	var setData = function(res){
 		var url = "";
-		res = res.sort(function(a, b) {
-			return b.rank - a.rank;
-		});
+		if(!localStorage.getItem("fromEmailArticle") || localStorage.getItem("fromEmailArticle") == ""){
+			res = res.sort(function(a, b) {
+				return b.rank - a.rank;
+			});
+		}
 		$scope.backUp = res;
 		$scope.totalRes = res;
 		($scope.totalRes.length > 10 ? "" : $scope.hideShowMore = !$scope.hideShowMore);
@@ -351,7 +353,7 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 						for(var i=0;i<res.length;i++){
 							res[i].indexTopic = res[i].topicName;
 						}
-						if(localStorage.getItem("fromEmailArticle") || localStorage.getItem("fromEmailArticle") != ""){
+						if(localStorage.getItem("fromEmailArticle") && localStorage.getItem("fromEmailArticle") != ""){
 							var searchKey = $('<textarea />').html(localStorage.getItem("fromEmailArticle")).text();
 							$http.post("/searchArticle", {name: searchKey }).success(function(result) {
 								console.log(result)
@@ -380,14 +382,15 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 					});
 				} else {
 					$http.get("/article/featured").success(function(res){
-						if(localStorage.getItem("fromEmailArticle") || localStorage.getItem("fromEmailArticle") != ""){
+						if(localStorage.getItem("fromEmailArticle") && localStorage.getItem("fromEmailArticle") != ""){
 							var featuredData = res;
 							console.log(featuredData)
 							var searchKey = $('<textarea />').html(localStorage.getItem("fromEmailArticle")).text();
 							$http.post("/searchArticle", {name: searchKey }).success(function(res) {
 								console.log(res)
 								if(res.data.length > 0){
-									res.data[0].indexTopic = res.data[0].topicName;
+									res.data[0].indexTopic = (res.data[0].topicName ?  res.data[0].topicName : res.data[0].indexTopic);
+									
 									johnRemoved = featuredData.filter(function(el) {
 										return el.title !== res.data[0].title;
 									});
