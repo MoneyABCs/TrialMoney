@@ -290,14 +290,19 @@ var searchSample = function(searchKeyword,res){
 var searchArticle = function(searchKeyword,res){
 	searchKeyword = searchKeyword.trim();//.replace(/ /g,"%20");
 	console.log(searchKeyword)
-	var data = ArticleSearchResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
+	console.log("-----------------------------------------------")
+	var data = ArticleSearchResult.find({"title": searchKeyword},function(err,data){
+		console.log(data)
 		if(data.length > 0){
 			var result = {
 				"data" : data,
 				"status" : 500
 			}
+			res.json(result);
 		} else {
-			var data = ArticleFeaturedResult.find({"title": new RegExp('^' + searchKeyword)},function(err,data){
+			var data = ArticleFeaturedResult.find({"title": searchKeyword},function(err,data){
+				console.log("inside 2nd")
+				console.log(data)
 				if(data.length > 0){
 					var result = {
 						"data" : data,
@@ -313,6 +318,7 @@ var searchArticle = function(searchKeyword,res){
 				res.json(result);
 			});
 		}
+		
 	});		
 }
 

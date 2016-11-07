@@ -386,17 +386,18 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 							var featuredData = res;
 							console.log(featuredData)
 							var searchKey = $('<textarea />').html(localStorage.getItem("fromEmailArticle")).text();
+							console.log(searchKey)
 							$http.post("/searchArticle", {name: searchKey }).success(function(res) {
-								console.log(res)
+								console.log(res.data.length)
 								if(res.data.length > 0){
 									res.data[0].indexTopic = (res.data[0].topicName ?  res.data[0].topicName : res.data[0].indexTopic);
-									
+									console.log(res.data)
 									johnRemoved = featuredData.filter(function(el) {
 										return el.title !== res.data[0].title;
 									});
 									johnRemoved.unshift(res.data[0])
 									setData(johnRemoved);
-									localStorage.setItem("fromEmailArticle","")
+									//localStorage.setItem("fromEmailArticle","")
 								}
 							})
 						} else {
