@@ -225,6 +225,19 @@ app.controller("moneycontroller",function($scope,$http,$sce,$window){
 			res = res.sort(function(a, b) {
 				return b.rank - a.rank;
 			});
+			var tempRes;
+			for(var i=0;i<10;i++){
+				console.log(res[i].daysInLead)
+				if(res[i].daysInLead >= 5){
+					console.log(res[i])
+					tempRes = res.splice(i,1);
+					console.log(res[i])
+					console.log(tempRes)
+					//console.log(res)
+					res.push(tempRes[0])
+					console.log(res)
+				}
+			}
 		}
 		$scope.backUp = res;
 		$scope.totalRes = res;

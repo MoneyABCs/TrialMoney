@@ -34,7 +34,7 @@ app.use(methodOverride());
 	
 
 mongoose.connect(connectionString); //connects to local DB
-var ArticleSchema = new mongoose.Schema({
+/* var ArticleSchema = new mongoose.Schema({
 	title : String,
 	iframeLink : String,
 	date:String,
@@ -47,6 +47,21 @@ var ArticleSchema = new mongoose.Schema({
 	indexTopic :"",
 	topicRank : ""	
 },{collection : 'articleFeaturedResult'});
+var ArticleFeaturedResult = mongoose.model('ArticleFeaturedResult',ArticleSchema); */
+var ArticleSchema = new mongoose.Schema({
+	title : String,
+	iframeLink : String,
+	date:String,
+	snippet : String,
+	imgUrl : String,
+	displayLink:String, //domain
+	rank : String,
+	globalRank : String,
+	index : "",
+	indexTopic :"",
+	topicRank : "",
+	daysInLead : ""
+},{collection : 'articleFeaturedRes'});
 var ArticleFeaturedResult = mongoose.model('ArticleFeaturedResult',ArticleSchema);
 
 var ArticleSchemaFake = new mongoose.Schema({
@@ -99,7 +114,7 @@ app.post('/api/profile',function(req,res){
 
 });
 
-app.post("/api/getProfile", function (req,res){
+app.post("/api/getProfileProfile", function (req,res){
 	console.log(req.body.emailId);
 	var data = profileRes.find({"emailId": req.body.emailId},function(err,data){
 		console.log(data);
