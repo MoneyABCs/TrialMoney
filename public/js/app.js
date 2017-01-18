@@ -11,7 +11,7 @@ app.directive('imageonload', function() {
 			var index;
 			for(var loopVar = 0;loopVar < 160;loopVar++){
 				index = loopVar + 1;
-				if(searchTopics[loopVar]["search_topics_" + index] == angular.element(this).attr("topic").replace(/ /g,"%20")){
+				if(angular.element(this) && (searchTopics[loopVar]["search_topics_" + index] == angular.element(this).attr("topic").replace(/ /g,"%20"))){
 					angular.element(this).attr("src", "./images/defaultImg/search_" + index + "/" + Math.ceil(Math.random()*3) + ".png");
 				}
 			}
