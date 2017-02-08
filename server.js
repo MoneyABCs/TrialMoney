@@ -114,7 +114,7 @@ app.post('/api/profile',function(req,res){
 
 });
 
-app.post("/api/getProfileProfile", function (req,res){
+app.post("/api/getProfile", function (req,res){
 	console.log(req.body.emailId);
 	var data = profileRes.find({"emailId": req.body.emailId},function(err,data){
 		console.log(data);
